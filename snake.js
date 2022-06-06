@@ -17,7 +17,9 @@ placeFood();
 //draw canvas and elements initially
 draw();
 //execute orchestrating game function continuously 
-setInterval(executeGame, 1000);
+setInterval(executeGame, 500);
+//listen to user input via keyboard
+document.addEventListener('keydown', keyDown);
 
 //function for orchestrating game functionalities
 function executeGame() {
@@ -58,3 +60,16 @@ function placeFood() {
     food = { x: Math.floor(Math.random() * columns), y: Math.floor(Math.random() * rows) };
 }
 
+//function for evaluating user input and changing movement direction
+function keyDown(e) {
+    switch (e.keyCode) {
+        case 37: direction = 'LEFT';
+            break;
+        case 38: direction = 'UP';
+            break;
+        case 39: direction = 'RIGHT';
+            break;
+        case 40: direction = 'DOWN';
+            break;
+    }
+}
