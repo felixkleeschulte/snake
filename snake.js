@@ -23,7 +23,19 @@ document.addEventListener('keydown', keyDown);
 
 //function for orchestrating game functionalities
 function executeGame() {
-    //move snake one step forward
+
+    //check, if first part of snake is on position of food (if yes, place new food and add one part to the snake)
+    if (snake[0].x == food.x && snake[0].y == food.y) {
+        snake = [{ x: food.x, y: food.y }, ...snake];
+        //place new food item
+        placeFood();
+    }
+
+    //move all snake parts
+    shiftSnake();
+
+
+    //move first part of snake one step forward
     switch (direction) {
         case 'RIGHT': snake[0].x++;
             break;
@@ -33,6 +45,16 @@ function executeGame() {
             break;
         case 'DOWN': snake[0].y++;
             break;
+    };
+
+
+}
+
+//function for shifting all snake parts
+function shiftSnake() {
+    for (let i = snake.length - 1; i > 0; i--) {
+        snake[i].x = snake[i - 1].x;
+        snake[i].y = snake[i - 1].y;
     }
 }
 
