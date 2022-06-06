@@ -17,12 +17,19 @@ placeFood();
 //draw canvas and elements initially
 draw();
 //execute orchestrating game function continuously 
-setInterval(executeGame, 500);
+setInterval(executeGame, 250);
 //listen to user input via keyboard
 document.addEventListener('keydown', keyDown);
 
 //function for orchestrating game functionalities
 function executeGame() {
+    //check if first part of snake reaches border of game or snake bites itself
+    if (snake[0].x >= columns || snake[0].x < 0 || snake[0].y >= rows || snake[0].y < 0 ||
+        snake.slice(1).find(part => part.x == snake[0].x && part.y == snake[0].y)) {
+        snake = [{ x: columns / 2 - 1, y: rows / 2 - 1 }];
+        direction = 'LEFT';
+        placeFood();
+    }
 
     //check, if first part of snake is on position of food (if yes, place new food and add one part to the snake)
     if (snake[0].x == food.x && snake[0].y == food.y) {
