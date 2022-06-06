@@ -16,10 +16,13 @@ draw();
 
 //function for drawing canvas background and elements within canvas
 function draw() {
+    //draw background
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    drawElementOnCanvas('green', food.x, food.y)
-    drawElementOnCanvas('yellow', 1, 1);
+    //draw food
+    drawElementOnCanvas('yellow', food.x, food.y)
+    //draw snake
+    snake.forEach(snakePart => drawElementOnCanvas('white', snakePart.x, snakePart.y));
 }
 
 //generic function for drawing elements on the canvas, like food or snake parts
