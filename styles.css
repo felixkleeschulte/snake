@@ -7,11 +7,21 @@ body {
 }
 
 #section_gameContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
 }
 
 #canvas_playArea {
     background-color: aquamarine;
+    margin: 0%;
+}
+
+header {
+    background-color: rgb(250, 250, 250);
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 footer {
