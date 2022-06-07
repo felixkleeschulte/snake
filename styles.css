@@ -1,7 +1,21 @@
 body {
+    margin: 0%;
     font-family: 'Source Sans Pro', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#section_gameContent {
+    flex: 1;
 }
 
 #canvas_playArea {
     background-color: aquamarine;
+}
+
+footer {
+    background-color: rgb(196, 196, 196);
+    padding-left: 15px;
+    padding-right: 15px;
 }
