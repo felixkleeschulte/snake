@@ -6,10 +6,16 @@ body {
     min-height: 100vh;
 }
 
+#gameScore,
+#highScore {
+    display: inline
+}
+
 #section_gameContent {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     flex: 1;
 }
 

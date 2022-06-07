@@ -11,6 +11,8 @@ let snake = [{ x: columns / 2 - 1, y: rows / 2 - 1 }];
 let food;
 //other variables
 let direction = 'LEFT';
+let gameScore = 0;
+let highScore = 0;
 
 //place food initially at random position
 placeFood();
@@ -26,8 +28,15 @@ function executeGame() {
     //check if first part of snake reaches border of game or snake bites itself
     if (snake[0].x >= columns || snake[0].x < 0 || snake[0].y >= rows || snake[0].y < 0 ||
         snake.slice(1).find(part => part.x == snake[0].x && part.y == snake[0].y)) {
+        //reset variables
         snake = [{ x: columns / 2 - 1, y: rows / 2 - 1 }];
         direction = 'LEFT';
+        if (gameScore > highScore) {
+            highScore = gameScore;
+            document.getElementById('highScore').innerHTML = highScore;
+        }
+        gameScore = 0;
+        document.getElementById('gameScore').innerHTML = "-";
         placeFood();
     }
 
@@ -36,6 +45,10 @@ function executeGame() {
         snake = [{ x: food.x, y: food.y }, ...snake];
         //place new food item
         placeFood();
+        //increase gameScore
+        gameScore++;
+        document.getElementById('gameScore').innerHTML = gameScore;
+
     }
 
     //move all snake parts
